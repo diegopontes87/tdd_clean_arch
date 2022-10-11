@@ -32,8 +32,18 @@ class NumberTriviaRemoteDataSourceImplementation implements NumberTriviaRemoteDa
   }
 
   @override
-  Future<NumberTriviaModel> getRambomNumberTribia() {
-    // TODO: implement getRambomNumberTribia
-    throw UnimplementedError();
+  Future<NumberTriviaModel> getRambomNumberTribia() async {
+    var response = await client?.get(
+        Uri(
+          scheme: 'http',
+          host: 'numbersapi.com',
+          path: 'random',
+        ),
+        headers: {'ContentType': 'application/json'});
+    if (response?.statusCode == 200) {
+      return NumberTriviaModel.fromJson(json.decode(response?.body ?? ''));
+    } else {
+      throw ServerException();
+    }
   }
 }
