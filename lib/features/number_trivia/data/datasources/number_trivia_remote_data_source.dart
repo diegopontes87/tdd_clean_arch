@@ -17,27 +17,20 @@ class NumberTriviaRemoteDataSourceImplementation implements NumberTriviaRemoteDa
 
   @override
   Future<NumberTriviaModel> getConcreteNumberTribia(int number) async {
-    var response = await client?.get(
-        Uri(
-          scheme: 'http',
-          host: 'numbersapi.com',
-          path: '$number',
-        ),
-        headers: {'ContentType': 'application/json'});
-    if (response?.statusCode == 200) {
-      return NumberTriviaModel.fromJson(json.decode(response?.body ?? ''));
-    } else {
-      throw ServerException();
-    }
+    return _getTriviaFromPath(number.toString());
   }
 
   @override
   Future<NumberTriviaModel> getRambomNumberTribia() async {
+    return _getTriviaFromPath('random');
+  }
+
+  Future<NumberTriviaModel> _getTriviaFromPath(String path) async {
     var response = await client?.get(
         Uri(
           scheme: 'http',
           host: 'numbersapi.com',
-          path: 'random',
+          path: path,
         ),
         headers: {'ContentType': 'application/json'});
     if (response?.statusCode == 200) {
