@@ -48,7 +48,9 @@ class NumberTriviaPage extends StatelessWidget {
                       message: state.errorMessage,
                     );
                   } else {
-                    return Container();
+                    return Container(
+                      color: Colors.blueAccent,
+                    );
                   }
                 },
               ),

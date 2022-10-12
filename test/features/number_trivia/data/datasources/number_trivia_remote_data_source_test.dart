@@ -21,7 +21,7 @@ void main() {
   });
 
   void setUpMockHttpClientSuccess200() {
-    when(mockClient?.get(any, headers: anyNamed('headers'))).thenAnswer((_) async => http.Response(fixture('trivia.json'), 200));
+    when(mockClient?.get(any, headers: anyNamed('headers'))).thenAnswer((_) async => http.Response('1 test', 200));
   }
 
   void setUpMockHttpClientFailure404() {
@@ -30,7 +30,7 @@ void main() {
 
   group('getConcreteNumberTrivia', () {
     const tNumber = 1;
-    final tNumberTriviaModel = NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
+    const tNumberTriviaModel = NumberTriviaModel(text: '1 test', number: 1);
     test('Should peform a GET request on a URL with number being the endpoint and with application/json header', () async {
       final Uri mockUri = Uri(scheme: 'http', host: 'numbersapi.com', path: '$tNumber');
       setUpMockHttpClientSuccess200();
@@ -52,7 +52,7 @@ void main() {
   });
 
   group('getRandomNumberTrivia', () {
-    final tNumberTriviaModel = NumberTriviaModel.fromJson(json.decode(fixture('trivia.json')));
+    const tNumberTriviaModel = NumberTriviaModel(number: 1, text: '1 test');
     test('Should peform a GET request on a URL with number being the endpoint and with application/json header', () async {
       final Uri mockUri = Uri(scheme: 'http', host: 'numbersapi.com', path: 'random');
       setUpMockHttpClientSuccess200();

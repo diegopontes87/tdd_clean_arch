@@ -39,14 +39,16 @@ class TriviaControlsState extends State<TriviaControls> {
           children: <Widget>[
             Expanded(
               child: ElevatedButton(
-                onPressed: dispatchConcrete,
+                onPressed: () {
+                  dispatchConcrete();
+                },
                 child: const Text('Search'),
               ),
             ),
             const SizedBox(width: 10),
             Expanded(
               child: ElevatedButton(
-                onPressed: dispatchRandom,
+                onPressed: () => dispatchRandom(),
                 child: const Text('Get random trivia'),
               ),
             ),
@@ -59,6 +61,7 @@ class TriviaControlsState extends State<TriviaControls> {
   void dispatchConcrete() {
     controller.clear();
     BlocProvider.of<NumberTriviaBloc>(context).add(GetTriviaForConcreteNumberEvent(numberString: inputStr ?? ''));
+    inputStr = null;
   }
 
   void dispatchRandom() {

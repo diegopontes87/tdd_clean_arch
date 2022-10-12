@@ -8,7 +8,7 @@ import 'package:tdd_clean_arch/features/number_trivia/domain/entities/number_tri
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
-  const tNumberTriviaModel = NumberTriviaModel(number: 1, text: 'Test Text');
+  const tNumberTriviaModel = NumberTriviaModel(number: 1, text: '1 test');
   test('Should be a subclass of NumberTrivia entity', () async {
     expect(tNumberTriviaModel, isA<NumberTrivia>());
   });
@@ -30,7 +30,7 @@ void main() {
   group('toJson', () {
     test('Should return a JSON map containing the proper data ', () {
       final result = tNumberTriviaModel.toJson();
-      final map = {"text": "Test Text", "number": 1};
+      final map = {"text": "1 test", "number": 1};
       expect(result, map);
     });
   });

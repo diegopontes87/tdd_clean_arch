@@ -9,6 +9,8 @@ import 'package:tdd_clean_arch/features/number_trivia/domain/entities/number_tri
 import 'package:tdd_clean_arch/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 import 'package:tdd_clean_arch/features/number_trivia/domain/usecases/get_random_number_trivia.dart';
 import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
+import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/number_trivia_event.dart';
+import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/number_trivia_state.dart';
 
 import 'number_trivia_bloc_test.mocks.dart';
 
@@ -17,7 +19,6 @@ import 'number_trivia_bloc_test.mocks.dart';
   MockSpec<GetConcreteNumberTriviaUseCase>(),
   MockSpec<InputConverter>(),
 ])
-@Timeout(Duration(seconds: 45))
 void main() {
   NumberTriviaBloc? bloc;
   MockGetConcreteNumberTriviaUseCase? mockGetConcreteNumberTriviaUC;
@@ -43,13 +44,14 @@ void main() {
   group('GetTriviaForConcreteNumber', () {
     const numberString = '1';
     const numberInteger = 1;
-    const numberTrivia = NumberTrivia(number: 1, text: 'text test');
+    const numberTrivia = NumberTrivia(number: 1, text: '1 test');
     void setupMockInputConverterSuccess() {
       when(mockInputConverter?.stringToUnsignedInteger(numberString)).thenReturn(const Right(numberInteger));
     }
 
     test('Should call the inputConverter to validate and convert the string to an unsigned integer', () async {
       setupMockInputConverterSuccess();
+      when(mockGetConcreteNumberTriviaUC!(any)).thenAnswer((_) async => const Right(numberTrivia));
       bloc?.add(const GetTriviaForConcreteNumberEvent(numberString: numberString));
       await untilCalled(mockInputConverter?.stringToUnsignedInteger(numberString));
       verify(mockInputConverter?.stringToUnsignedInteger(numberString));
@@ -68,10 +70,8 @@ void main() {
     test('Should get data from the concrete usecase', () async* {
       setupMockInputConverterSuccess();
       when(mockGetConcreteNumberTriviaUC!(any)).thenAnswer((_) async => const Right(numberTrivia));
-
       bloc?.add(const GetTriviaForConcreteNumberEvent(numberString: numberString));
       await untilCalled(mockGetConcreteNumberTriviaUC!(any));
-
       verify(mockGetConcreteNumberTriviaUC!(const Params(number: numberInteger)));
     });
 

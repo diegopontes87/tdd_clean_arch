@@ -40,7 +40,7 @@ class NumberTriviaRepositoryImplementation implements NumberTriviaRepository {
     if (isConnected!) {
       try {
         var numberTrivia = await getConcreteOrRandom();
-        localDataSource?.cacheNumberTriva(numberTrivia as NumberTriviaModel);
+        await localDataSource?.cacheNumberTriva(numberTrivia as NumberTriviaModel);
         return Right(numberTrivia);
       } on ServerException {
         return Left(ServerFailure());
