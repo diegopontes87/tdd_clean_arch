@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tdd_clean_arch/features/number_trivia/data/models/number_trivia_model.dart';
