@@ -1,11 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:tdd_clean_arch/core/error/exceptions.dart';
+import 'package:tdd_clean_arch/core/error/failures.dart';
 import 'package:tdd_clean_arch/core/network/network_info.dart';
 import 'package:tdd_clean_arch/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:tdd_clean_arch/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
 import 'package:tdd_clean_arch/features/number_trivia/data/models/number_trivia_model.dart';
 import 'package:tdd_clean_arch/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:tdd_clean_arch/core/error/failures.dart';
-import 'package:dartz/dartz.dart';
 import 'package:tdd_clean_arch/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
 typedef _ConcreteOrRandomChooser = Future<NumberTrivia> Function();

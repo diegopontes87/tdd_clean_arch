@@ -1,7 +1,7 @@
-import 'dart:convert';
-import 'package:tdd_clean_arch/core/error/exceptions.dart';
-import '../models/number_trivia_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:tdd_clean_arch/core/error/exceptions.dart';
+
+import '../models/number_trivia_model.dart';
 
 abstract class NumberTriviaRemoteDataSource {
   Future<NumberTriviaModel> getConcreteNumberTribia(int number);

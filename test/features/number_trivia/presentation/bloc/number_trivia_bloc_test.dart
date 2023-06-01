@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tdd_clean_arch/core/error/failures.dart';
 import 'package:tdd_clean_arch/core/usecases/no_params.dart';
@@ -8,9 +8,7 @@ import 'package:tdd_clean_arch/core/util/input_converter.dart';
 import 'package:tdd_clean_arch/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:tdd_clean_arch/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 import 'package:tdd_clean_arch/features/number_trivia/domain/usecases/get_random_number_trivia.dart';
-import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
-import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/number_trivia_event.dart';
-import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/number_trivia_state.dart';
+import 'package:tdd_clean_arch/features/number_trivia/presentation/bloc/cubit/number_trivia_cubit.dart';
 
 import 'number_trivia_bloc_test.mocks.dart';
 
@@ -20,7 +18,7 @@ import 'number_trivia_bloc_test.mocks.dart';
   MockSpec<InputConverter>(),
 ])
 void main() {
-  NumberTriviaBloc? bloc;
+  NumberTriviaCubit? bloc;
   MockGetConcreteNumberTriviaUseCase? mockGetConcreteNumberTriviaUC;
   MockGetRandomNumberTriviaUseCase? mockGetRandomNumberTriviaUC;
   MockInputConverter? mockInputConverter;

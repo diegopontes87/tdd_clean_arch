@@ -1,0 +1,14 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.rulers": [160],
+  "dart.lineLength": 160,
+  "[dart]": {
+    "editor.rulers": [160]
+  },
+  "java.configuration.updateBuildConfiguration": "automatic"
+}

@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
 import 'package:tdd_clean_arch/core/error/failures.dart';
 import 'package:tdd_clean_arch/core/usecases/no_params.dart';
 import 'package:tdd_clean_arch/core/usecases/usecase.dart';
